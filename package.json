@@ -1,0 +1,36 @@
+{
+  "name": "amphipod",
+  "version": "1.0.0",
+  "description": "Web crawler that crawls the web",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "url-parse": "^1.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm start",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owocean/amphipod.git"
+  },
+  "keywords": [
+    "web",
+    "crawler",
+    "index",
+    "database"
+  ],
+  "author": "owocean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/owocean/amphipod/issues"
+  },
+  "homepage": "https://github.com/owocean/amphipod#readme"
+}
