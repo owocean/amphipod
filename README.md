@@ -22,3 +22,13 @@ Arguments:
 * `verbose` - Enables verbose output
 * `nocrawl` - Runs without webcrawler
 * `ipguess` - Enables IP Guessing
+
+## searching
+```javascript
+const search = require("./search"); // relative path to search.js
+
+(async () => {
+    var result = await search('output/','lorem ipsum'); // path to output directory + search term
+    console.log(result);
+})();
+```

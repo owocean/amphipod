@@ -1,6 +1,7 @@
 const fs = require("fs"),
     util = require("util"),
-    path = require("path");
+    path = require("path"),
+    { forEach } = require("./legs");
 
 const fsReaddir = util.promisify(fs.readdir),
     fsReadFile = util.promisify(fs.readFile),
@@ -33,7 +34,7 @@ async function read() {
 }
 
 async function checkIfExists(url){
-    let res = await searchFilesInDirectory('output/', '"'+url+'"', '');
+    let res = await searchFilesInDirectory('output/', '"'+url+'"');
     return res;
 }
 
@@ -82,8 +83,8 @@ function countFileLines(filePath) {
     });
 }
 
-async function searchFilesInDirectory(dir, filter, ext) {
-    const found = await getFilesInDirectory(dir, ext);
+async function searchFilesInDirectory(dir, filter) {
+    const found = await getFilesInDirectory(dir, "");
     for (let file of found) {
         const fileContent = await fsReadFile(file);
         const regex = new RegExp('\\b' + filter + '\\b');
@@ -114,8 +115,23 @@ async function getFilesInDirectory(dir, ext) {
     return files;
 }
 
+async function search(dir,input){
+    let res = await getFilesInDirectory(dir,"");
+    let out = [];
+    await forEach(res, async function(file){
+        let contents = JSON.parse(await fsReadFile(file));
+        await forEach(contents, async function(item){
+            if(item.url.toLowerCase().includes(input.toLowerCase()) || item.title.toLowerCase().includes(input.toLowerCase())){
+                out.push(item);
+            }
+        });
+    });
+    return out;
+}
+
 module.exports = {
     save: save,
     read: read,
-    checkIfExists: checkIfExists
+    checkIfExists: checkIfExists,
+    search: search
 }

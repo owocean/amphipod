@@ -12,3 +12,4 @@ https://tumblr.com/
 https://discord.com/
 https://imdb.com/
 https://npmjs.org/
+https://mastodon.social/

@@ -93,3 +93,4 @@ function shuffle(arr) {
 module.exports.sweep = sweep;
 module.exports.getTitle = getTitle;
 module.exports.delay = delay;
+module.exports.forEach = forEach;
